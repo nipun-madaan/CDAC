@@ -2,7 +2,6 @@ class X{
 	private int a, b;
 	
 	public X(){
-		this(10,20);
 		System.out.println("X()");
 	}
 	
