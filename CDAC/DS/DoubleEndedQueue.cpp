@@ -148,7 +148,7 @@ int main(){
                 exit(0);
             default:
                  cout<<"Please enter correct choice"<<endl;
-            break;
+                break;
         }
     }
 }
