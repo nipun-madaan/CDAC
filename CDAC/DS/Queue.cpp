@@ -90,6 +90,9 @@ int main(){
                 break;
             case 4:
                 exit(0);
+            default:
+                cout<<"Please enter correct choice"<<endl;
+                break;
         }
     }
 }
