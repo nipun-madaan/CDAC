@@ -147,7 +147,7 @@ int main(){
             case 6:
                 exit(0);
             default:
-                 cout<<"Please enter correct choice"<<endl;
+                cout<<"Please enter correct choice"<<endl;
                 break;
         }
     }
