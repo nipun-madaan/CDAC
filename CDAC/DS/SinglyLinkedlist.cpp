@@ -236,6 +236,173 @@ class LinkedList{
                 }
             }
         }
+
+        void deleteAfterData(int givenData){
+            if(head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                Node* temp = head;
+                Node* temp1 = NULL;
+                while(temp != NULL && temp->getData() != givenData)
+                {
+                    temp=temp->getNext();
+                }
+                if(temp != NULL && temp->getNext() != NULL){
+                    temp1=temp->getNext();
+                    cout<<temp1->getData()<<" deleted!!!"<<endl;
+                    temp->setNext(temp1->getNext());
+                    delete temp1;
+                }else{
+                    cout<<"Data can't be deleted"<<endl;
+                }
+            }
+        }
+
+        void deleteBeforeData(int givenData){
+            if(head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                Node* temp = head;
+                Node* temp1 = NULL;
+                if(head->getNext() != NULL && head->getNext()->getData() == givenData){
+                    head = head->getNext();
+                    cout<<temp->getData()<<" deleted!!!"<<endl;
+                    delete temp;
+                }else{
+                    while(temp != NULL && temp->getNext() != NULL && temp->getNext()->getData() != givenData)
+                    {
+                        temp1=temp;
+                        temp=temp->getNext();
+                    }
+                    if(temp->getNext() != NULL){
+                        cout<<temp->getData()<<" deleted!!!"<<endl;
+                        temp1->setNext(temp->getNext());
+                        delete temp;
+                    }else{
+                        cout<<"Data can't be deleted"<<endl;
+                    }
+                }
+               
+            }
+        }
+
+        void deleteAtPosition(int position){
+            if(head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                int count=1;
+                Node* temp=head;
+                Node* temp1 = NULL;
+                if(position == 1){
+                    head=head->getNext();
+                    cout<<temp->getData()<<" deleted!!!"<<endl;
+                    delete temp;
+                }else{
+                    while(temp != NULL && count != position-1){
+                        temp=temp->getNext();
+                        count++;
+                    }
+                    if(temp != NULL && temp->getNext() != NULL){
+                        temp1=temp->getNext();
+                        temp->setNext(temp1->getNext());
+                        cout<<temp1->getData()<<" deleted!!!"<<endl;
+                        delete temp1;
+                    }else{
+                        cout<<"Wrong position entered"<<endl;
+                    }
+                }
+            }
+        }
+
+        void deleteAfterPosition(int position){
+            if(head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                int count=1;
+                Node* temp=head;
+                Node* temp1=NULL;
+                while(temp != NULL && count != position){
+                    temp=temp->getNext();
+                    count++;
+                }
+                if(temp != NULL && temp->getNext() != NULL){
+                    temp1=temp->getNext();
+                    temp->setNext(temp1->getNext());
+                    cout<<temp1->getData()<<" deleted!!!"<<endl;
+                    delete temp1;
+                }else{
+                    cout<<"Wrong position entered!!!"<<endl;
+                }
+            }
+        }
+
+        void deleteBeforePosition(int position){
+            if(head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                int count=1;
+                Node* temp=head;
+                Node* temp1 = NULL;
+                if(position == 2){
+                    head=head->getNext();
+                    cout<<temp->getData()<<" deleted!!!"<<endl;
+                    delete temp;
+                }else{
+                    while(temp != NULL && count != position-2){
+                        temp=temp->getNext();
+                        count++;
+                    }
+                    if(temp != NULL && temp->getNext() != NULL){
+                        temp1=temp->getNext();
+                        temp->setNext(temp1->getNext());
+                        cout<<temp1->getData()<<" deleted!!!"<<endl;
+                        delete temp1;
+                    }else{
+                        cout<<"Wrong position entered"<<endl;
+                    }
+                }
+            }
+        }
+
+        void reverseLinklist(LinkedList *l){
+            if(l->head == NULL){
+                cout<<"LinkList is empty"<<endl;
+            }else{
+                LinkedList l1;
+                Node* temp=l->head;
+                while(temp != NULL){
+                    Node* newNode = new Node(temp->getData());
+                    if(l1.head == NULL){
+                        l1.head = newNode;
+                    }else{
+                        newNode->setNext(l1.head);
+                        l1.head = newNode;
+                    }
+                    temp = temp->getNext();
+                }
+                cout<<"LinkList: ";
+                l->display();
+                cout<<"ReverseLinkList: ";
+                l1.display();
+            }
+        }
+
+        void findMiddleNode(){
+            if(head == NULL){
+                cout<<"Linklist is empty"<<endl;
+            }else{
+                Node* temp = head;
+                Node* temp1 = head;
+                while(temp!=NULL && temp->getNext() != NULL && 
+                    temp->getNext()->getNext() != NULL){
+                        temp = temp->getNext()->getNext();
+                        temp1 = temp1->getNext();
+                    }
+                    if(temp1 != NULL){
+                        cout<<"Middle Element: "<<temp1->getData()<<endl;
+                    }
+            }
+        }
         void display(){
             if(head == NULL){
                 cout<<"Linklist is empty"<<endl;
@@ -262,6 +429,13 @@ void menu(){
     cout<<"9. Delete node from beg"<<endl;
     cout<<"10. Delete node from end"<<endl;
     cout<<"11. Delete given node"<<endl;
+    cout<<"12. Delete node after data"<<endl;
+    cout<<"13. Delete node before data"<<endl;
+    cout<<"14. Delete node at position"<<endl;
+    cout<<"15. Delete node after position"<<endl;
+    cout<<"16. Delete node before position"<<endl;
+    cout<<"17. Reverse Linklist"<<endl;
+    cout<<"18. Find Middle Node"<<endl;
     cout<<"#################### Menu ##########################"<<endl;
 }
 int main(){
@@ -330,6 +504,37 @@ int main(){
                 cout<<"Enter data to be deleted: ";
                 cin>>data;
                 l.deleteNode(data);
+                break;
+            case 12:
+                cout<<"Enter data after which node is to be deleted: ";
+                cin>>data;
+                l.deleteAfterData(data);  
+                break; 
+            case 13:
+                cout<<"Enter data before which node is to be deleted: ";
+                cin>>data;
+                l.deleteBeforeData(data);  
+                break;  
+            case 14:
+                cout<<"Enter the position of node to be deleted: ";
+                cin>>position;
+                l.deleteAtPosition(position);
+                break;
+            case 15:
+                cout<<"Enter the position after which node is to be deleted: ";
+                cin>>position;
+                l.deleteAfterPosition(position);
+                break;
+            case 16:
+                cout<<"Enter the position before which node is to be deleted: ";
+                cin>>position;
+                l.deleteBeforePosition(position);
+                break;
+            case 17:
+                l.reverseLinklist(&l);
+                break;
+            case 18:
+                l.findMiddleNode();
                 break;
             default:
                 cout<<"Enter the correct choice!!!"<<endl;
