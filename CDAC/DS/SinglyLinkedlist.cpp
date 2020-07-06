@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdlib.h>
 using namespace std;
 class Node{
     private:
@@ -49,6 +50,19 @@ class LinkedList{
             cout<<data<<" entered successfully!!!"<<endl;
         }
 
+        void addAtEndForSort(int data){
+            Node* newNode = new Node(data);
+            if(head == NULL){
+                head = newNode;
+            }else{
+                Node* temp = head;
+                while(temp->getNext() != NULL){
+                    temp=temp->getNext();
+                }
+                temp->setNext(newNode);
+            }
+        }
+
         void addAtBeg(int data){
             Node* newNode = new Node(data);
             if(head == NULL){
@@ -88,18 +102,48 @@ class LinkedList{
                 cout<<"Linklist is empty. "<<givenData<<" not found."<<endl;
             }else{
                 Node* temp=head;
-                while(temp != NULL){
-                    if(temp->getData() == givenData || (temp->getNext() != NULL && temp->getNext()->getData()==givenData)){
-                        break;
-                    }
-                    temp=temp->getNext();
-                }
-                if(temp != NULL){
-                    newNode->setNext(temp->getNext());
-                    temp->setNext(newNode);
+                if(head->getData() == givenData){
+                    newNode->setNext(head);
+                    head = newNode;
                     cout<<data<<" entered successfully!!!"<<endl;
                 }else{
-                   cout<<givenData<<" not found!!!"<<endl;
+                     while(temp != NULL){
+                        if(temp->getData() == givenData || (temp->getNext() != NULL && temp->getNext()->getData()==givenData)){
+                            break;
+                        }
+                        temp=temp->getNext();
+                    }
+                    if(temp != NULL){
+                        newNode->setNext(temp->getNext());
+                        temp->setNext(newNode);
+                        cout<<data<<" entered successfully!!!"<<endl;
+                    }else{
+                    cout<<givenData<<" not found!!!"<<endl;
+                    }
+                }
+            }
+        }
+
+        void addBeforeDataForSort(int data,int givenData){
+            Node* newNode = new Node(data);
+            if(head == NULL){
+                return;
+            }else{
+                Node* temp=head;
+                if(head->getData() == givenData){
+                    newNode->setNext(head);
+                    head = newNode;
+                }else{
+                     while(temp != NULL){
+                        if(temp->getData() == givenData || (temp->getNext() != NULL && temp->getNext()->getData()==givenData)){
+                            break;
+                        }
+                        temp=temp->getNext();
+                    }
+                    if(temp != NULL){
+                        newNode->setNext(temp->getNext());
+                        temp->setNext(newNode);
+                    }
                 }
             }
         }
@@ -403,6 +447,37 @@ class LinkedList{
                     }
             }
         }
+
+        void sort(){
+            if(head==NULL){
+                cout<<"Linklist is empty"<<endl;
+            }else{
+                LinkedList l;
+                Node* temp = head->getNext();
+                
+                if(l.head == NULL){
+                    Node* newNode = new Node(head->getData());
+                    l.head = newNode;
+                }
+                Node* temp1 = l.head;
+                while(temp != NULL){
+                    temp1=l.head;
+                    while(temp1 != NULL){
+                        if(temp->getData()<temp1->getData()){
+                            l.addBeforeDataForSort(temp->getData(),temp1->getData());
+                            break;
+                        }
+                        temp1 = temp1->getNext();
+                    }
+                    if(temp1 == NULL){
+                        l.addAtEndForSort(temp->getData());
+                    }
+                    temp = temp->getNext();
+                }
+                l.display();
+            }
+        }
+
         void display(){
             if(head == NULL){
                 cout<<"Linklist is empty"<<endl;
@@ -436,6 +511,8 @@ void menu(){
     cout<<"16. Delete node before position"<<endl;
     cout<<"17. Reverse Linklist"<<endl;
     cout<<"18. Find Middle Node"<<endl;
+    cout<<"19. Sort the elements of linklist"<<endl;
+    cout<<"20. Exit"<<endl;
     cout<<"#################### Menu ##########################"<<endl;
 }
 int main(){
@@ -536,6 +613,11 @@ int main(){
             case 18:
                 l.findMiddleNode();
                 break;
+            case 19:
+                l.sort();
+                break;
+            case 20:
+                exit(0);
             default:
                 cout<<"Enter the correct choice!!!"<<endl;
         }
