@@ -45,9 +45,9 @@ void merge(int *arr,int left,int right,int mid){
 }
 void mergeSort(int *arr,int left, int right){
     if(left<right){
-        int mid=left+(right-left)/2;
-        mergeSort(arr,left,mid);
-        mergeSort(arr,mid+1,right);
+        int mid=left+(right-left)/2;   //mid=(left+right)/2
+        mergeSort(arr,left,mid);      //left array
+        mergeSort(arr,mid+1,right);   //right array
         merge(arr,left,right,mid);
     }
 }
