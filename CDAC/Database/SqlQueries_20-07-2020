@@ -1,0 +1,51 @@
+1. show databases;
+2. create database AABKMN;
+3. show databases;
+4. use aabkmn;
+5. create table student(student_id int,name varchar(20),dob DATE, 
+contact_no varchar(11), address varchar(100), zipcode int(6));
+6. show tables;
+7. desc student;
+8. alter table student add constraint primary key(student_id);
+9. desc student;
+10. create table employees(emp_id int primary key,emp_name varchar(20),
+dept varchar(20), salary double, contact_no varchar(11));
+11. show tables;
+12. desc employees;
+13. drop table employees;
+14. create table employees(emp_id int,emp_name varchar(20), 
+dept varchar(20), salary double, contact_no varchar(11), primary key (emp_id)); 
+15. desc employees;
+16. alter table student add column course_id int;
+17. desc student;
+18. create table courses(course_id int primary key, course_name varchar(50),
+subjects varchar(500), course_cordinator varchar(20), cordinator_no varchar(11));
+19. desc courses;
+20. alter table courses change cordinator_no cordinator_mobileNo varchar(11);
+21. desc courses;
+22. alter table courses modify column course_name varchar(75);
+23. desc courses;
+24. alter table courses drop column course_cordinator;
+25. desc courses;
+26. alter table student add constraint foreign key(course_id) 
+references courses(course_id);
+27. desc student;
+28. drop table student;
+29. create table student(student_id int primary key,name varchar(20),dob DATE, 
+contact_no varchar(11), address varchar(100), zipcode int(6),course_id int, 
+foreign key(course_id) references courses(course_id));
+30. desc student;
+31. show tables;
+32. desc employees;
+33. insert into employees(emp_id,emp_name,dept,salary,contact_no) 
+values(101,"Nipun","IT",40000.00,"9812180092");
+34. select * from employees;
+35. insert into employees values(102,"Bhushan","IT",45000.00,"8745125487");
+36. select * from employees;
+37. insert into employees values(103,"Bhushan","IT",45000.00,null);
+38. select * from employees;
+39. insert into employees(emp_id,emp_name,dept) values(104,"Nidhi","CSE");
+40. select * from employees;
+41. insert into employees(salary,contact_no,emp_name,emp_id,dept) 
+values(38000.00,"8745125795","Akash",105,"DB");
+42. select * from employees;
