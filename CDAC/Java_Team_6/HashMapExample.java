@@ -7,8 +7,8 @@ class HM{
 		h.put(6.5,"Five");
 		h.put(6.3,"Three");
 		h.put(6.4,4);
-		h.put("A",5.5);    //replace Five by Six
-		h.put(6.6,"Six");
+		h.put(6.5,"Six");    //replace Five by Six
+		h.put("A",6);
 		System.out.println(h);
 		System.out.println(h.get(6.3));
 		h.remove("Six");
