@@ -98,6 +98,117 @@ class LinkedList{
             }
         }
 
+        void addNodeAfterData(int data,int after){
+            Node* newNode = new Node(data);
+            if(head != NULL){
+                Node* temp = head;
+                while(temp != NULL&& temp->getData() != after ){
+                    temp = temp->getNext();
+                }
+                if(temp != NULL){
+                    newNode->setNext(temp->getNext());
+                    temp->setNext(newNode);
+                    cout<<data<<" added sucessfully!!!"<<endl;
+                }else{
+                    cout<<data<<" not found!!!"<<endl;
+                }
+            }else{
+                cout<<"LinkedList is empty. Can't find the data"<<endl;
+            }
+        }   
+
+        void addNodeBeforeData(int data, int before){
+            Node* newNode = new Node(data);
+            if(head != NULL){
+                if(head->getData() == before){
+                    addNodeAtStart(data);
+                }else{
+                    Node* temp=head;
+                    while(temp != NULL && temp->getNext() != NULL && temp->getNext()->getData() != before){
+                        temp = temp->getNext();
+                    }
+                    if(temp != NULL){
+                        newNode->setNext(temp->getNext());
+                        temp->setNext(newNode);
+                        cout<<data<<" added successfully!!!"<<endl;
+                    }else{
+                        cout<<data<<" not found!!!"<<endl;
+                    }
+                }
+            }else{
+                cout<<"LinkedList is empty. Can't find the data"<<endl;
+            }
+        }
+
+        void removeAfterData(int after){
+            if(head != NULL){
+                Node* temp = head;
+                while(temp != NULL && temp->getData() != after){
+                    temp = temp->getNext();
+                }
+                if(temp != NULL && temp->getNext() != NULL){
+                    Node* temp1 = temp->getNext();
+                    temp->setNext(temp->getNext()->getNext());
+                    cout<<temp1->getData()<<" removed successfully!!!"<<endl;
+                    delete temp1;
+                }else{
+                    cout<<"Can't remove data!!!"<<endl;
+                }
+            }else{
+                cout<<"LinkedList is empty!!!"<<endl;
+            }
+        }
+
+        void removeBeforeData(int before){
+            if(head != NULL){
+                if(head->getData() != before){
+                    Node* temp = head;
+                    if(head->getNext() != NULL && head->getNext()->getData() == before){
+                        removeFromStart();
+                    }else{
+                        while(temp->getNext()->getNext() != NULL && temp->getNext()->getNext()->getData() != before){
+                            temp = temp->getNext();
+                        }
+
+                        if(temp->getNext()->getNext() != NULL){
+                            Node* temp1 = temp->getNext();
+                            temp->setNext(temp->getNext()->getNext());
+                            cout<<temp1->getData()<<" removed suceesfully!!!"<<endl;
+                            delete temp1;
+                        }else{
+                            cout<<"Can't remove data!!!"<<endl;
+                        }
+                    }
+                    
+                }else{  
+                    cout<<"Can't remove data!!!"<<endl;
+                }
+            }else{
+                cout<<"LinkedList is empty!!!"<<endl;
+            }
+        }
+
+        void deleteNode(int data){
+            if(head != NULL){
+                Node* temp = head;
+                if(head ->getData() == data){
+                    removeFromStart();
+                }else{
+                    while(temp->getNext() != NULL && temp->getNext()->getData() != data){
+                        temp = temp->getNext();
+                    }
+                    if(temp->getNext() != NULL){
+                        Node* temp1 = temp->getNext();
+                        temp->setNext(temp->getNext()->getNext());
+                        cout<<temp1->getData()<<" removed sucessfully!!!"<<endl;
+                    }else{
+                       cout<<"Can't remove data!!!"<<endl;  
+                    }
+                }
+            }else{
+                cout<<"LinkedList is empty!!!"<<endl; 
+            }
+        }
         void display(){
             if(head != NULL){
                 Node* temp = head;
@@ -118,10 +229,15 @@ void menu(){
     cout<<"3. Add Node at start"<<endl;
     cout<<"4. Delete Node from end"<<endl;
     cout<<"5. Delete Node form start"<<endl;
+    cout<<"6. Add node after given node"<<endl;
+    cout<<"7. Add node before given node"<<endl;
+    cout<<"8. Remove node after given node"<<endl;
+    cout<<"9. Remove node before given node"<<endl;
+    cout<<"10. Remove a particular node"<<endl;
     cout<<"Enter the choice: "; 
 }
 int main(){
-    int choice, data;
+    int choice, data, givenData;
     LinkedList l;
     while(1){
         menu();
@@ -145,6 +261,35 @@ int main(){
                 break;
             case 5:
                 l.removeFromStart();
+                break;
+            case 6:
+                cout<<"Enter the data to be added: ";
+                cin>>data;
+                cout<<"Enter the data after which node is to be added: ";
+                cin>>givenData;
+                l.addNodeAfterData(data, givenData);
+                break;
+            case 7:
+                cout<<"Enter the data to be added: ";
+                cin>>data;
+                cout<<"Enter the data before which node is to be added: ";
+                cin>>givenData;
+                l.addNodeBeforeData(data, givenData);
+                break;
+            case 8:
+                cout<<"Enter the data after which node to be removed: ";
+                cin>>givenData;
+                l.removeAfterData(givenData);
+                break;
+            case 9:
+                cout<<"Enter the data before which node to be removed: ";
+                cin>>givenData;
+                l.removeBeforeData(givenData);
+                break;
+            case 10:
+                cout<<"Enter the data to be removed: ";
+                cin>>givenData;
+                l.deleteNode(givenData);
                 break;
             default:
                 exit(0);
