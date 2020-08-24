@@ -222,6 +222,92 @@ class LinkedList{
                 cout<<"Linked List is empty!!!"<<endl;
             }
         }
+
+        void addNodeAfterPosition(int data, int position){
+            Node* newNode = new Node(data);
+            if(head != NULL){
+                if(position > 0){
+                    Node* temp = head;
+                    int count = 1;
+                    while(temp != NULL && count != position){
+                        temp = temp->getNext();
+                        count++;
+                    }
+                    if(temp != NULL){
+                        newNode->setNext(temp->getNext());
+                        temp->setNext(newNode);
+                        cout<<data<<" added successfully!!!"<<endl;
+                    }else{
+                        cout<<"Wrong position entered!!!"<<endl;
+                    }
+                }else{
+                    cout<<"Invalid position!!!"<<endl;
+                }
+            }else{
+                cout<<"Linked List is empty!!!"<<endl;
+            }
+        }
+
+        void addNodeBeforePosition(int data, int position){
+            Node* newNode = new Node(data);
+            if(head != NULL){
+                if(position > 0){
+                    if(position == 1){
+                        addNodeAtStart(data);
+                    }else{
+                        Node* temp = head;
+                        int count = 1;
+                        while(temp != NULL && count != position-1){
+                            temp = temp->getNext();
+                            count++;
+                        }
+                        if(temp != NULL){
+                            newNode->setNext(temp->getNext());
+                            temp->setNext(newNode);
+                            cout<<data<<" added successfully!!!"<<endl;
+                        }else{
+                            cout<<"Wrong position entered!!!"<<endl;
+                        }
+                    }
+                }else{
+                    cout<<"Invalid position!!!"<<endl;
+                }
+            }else{
+                cout<<"LinkedList is empty!!!"<<endl;
+            }
+        }
+
+        void addNodeAtPosition(int data, int position){
+            Node* newNode = new Node(data);
+            if(head != NULL){
+                if(position > 0){
+                    if(position == 1){
+                        addNodeAtStart(data);
+                    }else{
+                        Node* temp = head;
+                        int count = 1;
+                       // Node* temp1;
+                        if(temp != NULL && count != (position - 1)){
+                            //temp1 = temp;
+                            temp = temp->getNext();
+                            count++;
+                        }
+                        if(temp != NULL){
+                            newNode->setNext(temp->getNext());
+                            temp->setNext(newNode);
+                        }else{
+                            cout<<"Wrong position entered!!!"<<endl;
+                            //temp1->setNext(newNode);
+                        }
+                        cout<<data<<" added successfully!!!"<<endl;
+                    }
+                }else{
+                    cout<<"Invalid position!!!"<<endl;
+                }
+            }else{
+                cout<<"LinkedList is Empty!!!"<<endl;
+            }
+        }
 };
 void menu(){
     cout<<"1. Display"<<endl;
@@ -234,10 +320,13 @@ void menu(){
     cout<<"8. Remove node after given node"<<endl;
     cout<<"9. Remove node before given node"<<endl;
     cout<<"10. Remove a particular node"<<endl;
+    cout<<"11. Add node after position"<<endl;
+    cout<<"12. Add node before position"<<endl;
+    cout<<"13. Add node at position"<<endl;
     cout<<"Enter the choice: "; 
 }
 int main(){
-    int choice, data, givenData;
+    int choice, data, givenData, position;
     LinkedList l;
     while(1){
         menu();
@@ -290,6 +379,27 @@ int main(){
                 cout<<"Enter the data to be removed: ";
                 cin>>givenData;
                 l.deleteNode(givenData);
+                break;
+            case 11:
+                cout<<"Enter the data to be added: ";
+                cin>>data;
+                cout<<"Enter the position after which node is to be added:";
+                cin>>position;
+                l.addNodeAfterPosition(data,position);
+                break;
+            case 12:
+                cout<<"Enter the data to be added: ";
+                cin>>data;
+                cout<<"Enter the position before which node is to be added:";
+                cin>>position;
+                l.addNodeBeforePosition(data,position);
+                break;
+            case 13:
+                cout<<"Enter the data to be added: ";
+                cin>>data;
+                cout<<"Enter the position at which node is to be added:";
+                cin>>position;
+                l.addNodeAtPosition(data,position);
                 break;
             default:
                 exit(0);
