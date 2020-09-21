@@ -1,7 +1,7 @@
 package cdac;
 import java.util.Scanner;
 
-class Ab{
+class ScannerClass{
 	static Scanner sc;
 	static void sum() {
 		int a = sc.nextInt();
@@ -10,6 +10,7 @@ class Ab{
 	}
 	public static void main(String[] args){
 		sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();   //int
 		float b = sc.nextFloat();
 		double c = sc.nextDouble();
