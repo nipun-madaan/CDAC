@@ -1,22 +1,22 @@
 package cdac;
 
-public class B {
+public class StaticNInstanceVariable {
 
 	static int i = 5;
 	int j = 10;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		B b1 = new B();
+		StaticNInstanceVariable b1 = new StaticNInstanceVariable();
 		System.out.println(i);  //5
 		System.out.println(b1.j);  //10
 		i++;
 		b1.j++;
-		B b2 = new B();
+		StaticNInstanceVariable b2 = new StaticNInstanceVariable();
 		System.out.println(i);   //6
 		System.out.println(b2.j); //10
 		i++;
 		b2.j++;
-		B b3 = new B();
+		StaticNInstanceVariable b3 = new StaticNInstanceVariable();
 		System.out.println(i);  //7
 		i++;
 		b3.j++;
