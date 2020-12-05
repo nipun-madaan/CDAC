@@ -24,9 +24,10 @@ public class ArrayListEx {
 		//a1.add(20.5);
 		//a1.add("Amit");
 		System.out.println(a1);
-		//a.removeAll(a1);
-		System.out.println(a);
-		System.out.println(a.containsAll(a1));
+		//a.removeAll(a1);   //remove all the elements present in the second arraylist
+ 		System.out.println(a);
+		System.out.println(a.containsAll(a1));  //checks whether second list is present 
+												//inside the first one i.e. comparison
 		//#####################################################
 		ArrayList a2 = new ArrayList();
 		a2.add(50);
@@ -35,9 +36,12 @@ public class ArrayListEx {
 		a2.add(10);
 		a2.add(30);
 		System.out.println(a2);
-		Collections.sort(a2);
+		Collections.sort(a2);    //Collections is a class use to search and sort the list
+								//It is used to sort the data present in the list
+								//but condition is that data should be homogeneous
 		System.out.println(a2);
-		int index = Collections.binarySearch(a2, 50);
+		int index = Collections.binarySearch(a2, 50);  //to search the elements in the list
+													//but catch is data should be sorted
 		System.out.println(index);
 	}
 }
