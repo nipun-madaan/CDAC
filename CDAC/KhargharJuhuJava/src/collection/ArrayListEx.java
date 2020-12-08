@@ -18,6 +18,7 @@ public class ArrayListEx {
 		//a.clear();   //remove all the elements
 		System.out.println(a);
 		a.add(10);
+		a.add(1, 100);
 		System.out.println(a);
 		ArrayList a1 = new ArrayList();
 		a1.add(10);
@@ -29,7 +30,7 @@ public class ArrayListEx {
 		System.out.println(a.containsAll(a1));  //checks whether second list is present 
 												//inside the first one i.e. comparison
 		//#####################################################
-		ArrayList a2 = new ArrayList();
+		ArrayList<Integer> a2 = new ArrayList<Integer>();
 		a2.add(50);
 		a2.add(20);
 		a2.add(40);
