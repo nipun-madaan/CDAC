@@ -30,7 +30,7 @@ public class ArrayListEx {
 		System.out.println(a.containsAll(a1));  //checks whether second list is present 
 												//inside the first one i.e. comparison
 		//#####################################################
-		ArrayList<Integer> a2 = new ArrayList<Integer>();
+		ArrayList<Integer> a2 = new ArrayList<Integer>();  //restrict particular type of data to be inserted only
 		a2.add(50);
 		a2.add(20);
 		a2.add(40);
