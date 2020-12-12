@@ -1,5 +1,4 @@
 package collection;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class LinkedListEx {
 		System.out.println(l);
 		l.remove(20.5);
 		System.out.println(l); //it will delete the particular value 
-		System.out.println(l.isEmpty());
+		System.out.println(l.isEmpty()); //it will empty the list
 		l.add(10);
 		l.add(20.5);
 		l.add("Nipun");
@@ -56,25 +55,36 @@ public class LinkedListEx {
 		ll.add(30);
 		//ll.removeIf(n->n%2!=0);//removeif   //boolean even(n){
 		System.out.println(ll);				//	if(n%2==0) return true;else return false;
+		/**removeif is used when you want to remove the element which satisfied the particular condition***/
 		//l.removeAll(ll);									//	}
+		/**
+		 * removeAll is used to remove the common data of both the linklist 
+		 */
 		l.retainAll(ll);//retainall
+		/**
+		 * retailAll is used to remove all the elements from the list except the common one
+		 */
 		System.out.println(l);
 		System.out.println(ll);
-		ll.set(1,50);//set
+		ll.set(1,50);//set is used to set the data at particular index. It overrides the 
+				//data present at that particular index
 		System.out.println(ll);
-		List<Integer> sl = ll.subList(2, 6);//subList
+		List<Integer> sl = ll.subList(2, 6);//subList is used to break the list into another list
+									//starting from mentioned index and moved till the mentioned index but that index is not included
 		System.out.println(sl);
-		Object[] arr = ll.toArray();//toArray
+		Object[] arr = ll.toArray();//toArray is used to convert list to the array
 		for(Object o : arr) {
 			System.out.print(o+" ");
 		}
 		System.out.println();
-		Iterator<Integer> itr = ll.iterator(); //iterator
+		Iterator<Integer> itr = ll.iterator(); //iterator provides you the object of iterator which is 
+								//used to iterate over the elements
 		while(itr.hasNext()) {
 			System.out.print(itr.next()+" ");
 		}
 		System.out.println();
-		Iterator<Integer> dItr = ll.descendingIterator();//descendingIterator
+		Iterator<Integer> dItr = ll.descendingIterator();//descendingIterator provides the iterator which prints the list in reverse order
+							//this iterator is used to iterate over the elements in reverse order
 		while(dItr.hasNext()) {
 			System.out.print(dItr.next()+" ");
 		}
