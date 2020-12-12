@@ -3,7 +3,6 @@
  */
 package collection;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -18,7 +17,7 @@ public class HashSetEx {
 	 */
 	public static void main(String[] args) {
 		HashSet<Integer> h = new HashSet<Integer>();
-		System.out.println(h.add(10));
+		System.out.println(h.add(10));  //add element in the set and return true if added and return false if not added
 		h.add(10);
 		h.add(1001);
 		h.add(1010);
