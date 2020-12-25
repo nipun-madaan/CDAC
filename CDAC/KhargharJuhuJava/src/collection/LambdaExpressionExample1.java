@@ -21,5 +21,7 @@ public class LambdaExpressionExample1 {
 			System.out.println("Hello "+name);
 		};
 		a.say(str);
+		sc.close();
 	}
 }
+
