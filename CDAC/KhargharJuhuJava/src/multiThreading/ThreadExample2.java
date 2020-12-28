@@ -12,7 +12,6 @@ public class ThreadExample2{
 		
 		t1.start();
 	}
-
 	public static void main1(String[] args) {
 		Runnable r = ()->{  //Lambda Expression
 			for(int i=1;i<=10;i++) {
