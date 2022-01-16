@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+	<hibernate-configuration>
+		<session-factory>
+			<property name="connect.driver_class">com.mysql.cj.jdbc.Driver</property>
+			<property name="connection.url">jdbc:mysql://localhost:3306/nipun</property>
+			<property name="connection.username">root</property>
+		    <property name="connection.password">Nipun@121</property>
+			<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+			<property name="hbm2ddl.auto">create</property>
+			<property name="show_sql">true</property>
+			<mapping class="com.cdac.Student"/>
+		
+		
+		</session-factory>
+	</hibernate-configuration>
